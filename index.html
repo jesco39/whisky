@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="static/flipclock.css">
+        <link rel="stylesheet" href="static/app.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="static/flipclock.js"></script>
+    </head>
+    <body>
+        <div class="main">
+            <h1><p id="W"></p></h1>
+            <div class="clock" style="margin:2em;"></div>
+        </div>
+    <script type="text/javascript">
+        var clock;
+        $(document).ready(function() {
+            // Grab the current date
+            var currentDate = new Date();
+            // Calculate delta one week ahead of curent date since June 25 2015 16:00:00(1435273200000)
+            var startDate = 1435273200000;
+            var oneWeek = 604800000;
+            var deltaTime = currentDate.getTime() - startDate;
+            var weekDelta = oneWeek - deltaTime;
+            var futureDate = new Date(currentDate.getTime() + weekDelta);
+            // Calculate the difference in seconds between the future and current date
+            var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+            // Instantiate a coutdown FlipClock
+            clock = $('.clock').FlipClock(diff, {
+                clockFace: 'DailyCounter',
+                countdown: true
+            });
+            if (currentDate.getDay() == 4 && currentDate.getHours() < 16) {
+                clock.stop();
+                document.getElementById("W").innerHTML = "W, Big Time!";
+            } else {
+                document.getElementById("W").innerHTML = "Whisky Thursday in";
+            }
+        });
+    </script>
+    </body>
+</html>

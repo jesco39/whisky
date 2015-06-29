@@ -1,0 +1,11 @@
+.main {
+    padding-top: 100px;
+    max-width:660px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    font: normal 2.5em "Helvetica Neue", Helvetica, sans-serif;
+
+}
