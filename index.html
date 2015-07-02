@@ -29,7 +29,7 @@
                 clockFace: 'DailyCounter',
                 countdown: true
             });
-            if (currentDate.getDay() == 4 && currentDate.getHours() < 16) {
+            if (currentDate.getDay() == 4 && currentDate.getHours() >= 16) {
                 clock.stop();
                 document.getElementById("W").innerHTML = "W, Big Time!";
             } else {
