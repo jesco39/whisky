@@ -18,21 +18,24 @@
             var currentDate = new Date();
             // Calculate delta one week ahead of curent date since June 25 2015 16:00:00(1435273200000)
             var startDate = 1435273200000;
-            var oneWeek = 604800000;
-            var deltaTime = currentDate.getTime() - startDate;
-            var weekDelta = oneWeek - deltaTime;
-            var futureDate = new Date(currentDate.getTime() + weekDelta);
+            var week = 604800000;
+            var delta = (Math.ceil((currentDate.getTime() - startDate) / week) * week) + startDate;
+            var futureDate = new Date(delta);
             // Calculate the difference in seconds between the future and current date
             var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
-            // Instantiate a coutdown FlipClock
-            clock = $('.clock').FlipClock(diff, {
-                clockFace: 'DailyCounter',
-                countdown: true
-            });
             if (currentDate.getDay() == 4 && currentDate.getHours() >= 16) {
+                // Instantiate a coutdown FlipClock
+                clock = $('.clock').FlipClock(0, {
+                    clockFace: 'DailyCounter',
+                });
                 clock.stop();
                 document.getElementById("W").innerHTML = "W, Big Time!";
             } else {
+                // Instantiate a coutdown FlipClock
+                clock = $('.clock').FlipClock(diff, {
+                    clockFace: 'DailyCounter',
+                    countdown: true,
+                });
                 document.getElementById("W").innerHTML = "Whisky Thursday in";
             }
         });
