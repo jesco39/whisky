@@ -20,6 +20,7 @@
             // Grab the current date
             var currentDate = new Date();
             // Calculate delta one week ahead of curent date
+            // TODO: Find a fix for dealing with daylight savings
             var startDate = 1450396800000;
             var week = 604800000;
             var delta = (Math.ceil((currentDate.getTime() - startDate) / week) * week) + startDate;
