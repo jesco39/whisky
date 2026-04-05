@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisky Wednesday</title>
+    <link rel="stylesheet" href="/static/flipclock.css">
+    <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+    <div class="wt">
+        <img alt="Whisky Wednesday" title="WW" src="/static/wt.png" width=896 height=398>
+    </div>
+    <div class="main">
+        <h1><p id="status-label"></p></h1>
+        <div class="clock" style="margin: auto"></div>
+    </div>
+
+    <script id="server-data" type="application/json">
+      {"active": {{.Active}}, "secondsUntil": {{.SecondsUntil}}}
+    </script>
+    <script src="/static/jquery-shim.js"></script>
+    <script src="/static/flipclock.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>
