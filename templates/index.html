@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whisky Wednesday</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <div class="wt">
+    <img alt="Whisky Wednesday" src="/static/wt.png" width="896" height="398">
+  </div>
+  <div class="main">
+    <h1 id="status-label"></h1>
+
+    <div id="countdown">
+      <div class="unit" id="days">
+        <div class="digits"><span class="digit">0</span><span class="digit">0</span></div>
+        <div class="unit-label">days</div>
+      </div>
+      <div class="sep">:</div>
+      <div class="unit" id="hours">
+        <div class="digits"><span class="digit">0</span><span class="digit">0</span></div>
+        <div class="unit-label">hours</div>
+      </div>
+      <div class="sep">:</div>
+      <div class="unit" id="minutes">
+        <div class="digits"><span class="digit">0</span><span class="digit">0</span></div>
+        <div class="unit-label">minutes</div>
+      </div>
+      <div class="sep">:</div>
+      <div class="unit" id="seconds">
+        <div class="digits"><span class="digit">0</span><span class="digit">0</span></div>
+        <div class="unit-label">seconds</div>
+      </div>
+    </div>
+  </div>
+
+  <script id="server-data" type="application/json">
+    {"active": {{.Active}}, "secondsUntil": {{.SecondsUntil}}}
+  </script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

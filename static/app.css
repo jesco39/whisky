@@ -1,16 +1,110 @@
-.main {
-    max-width: 620px;
-    margin: auto;
-    padding: 50px;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-h1 {
-    text-align: center;
-    font: normal 2.5em "Helvetica Neue", Helvetica, sans-serif;
+body {
+  background: #1a1a1a;
+  color: #f0f0f0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
 }
 
 .wt {
-    max-width: 900px;
-    padding-top: 50px;
-    margin: auto;
+  max-width: 760px;
+  padding: 40px 20px 0;
+  margin: auto;
+}
+
+.wt img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.main {
+  max-width: 640px;
+  margin: auto;
+  padding: 32px 20px 60px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: 36px;
+  color: #ccc;
+}
+
+/* Countdown units row */
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Separator colon */
+.sep {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #555;
+  align-self: flex-start;
+  padding-top: 14px;
+}
+
+/* Digit pair */
+.digits {
+  display: flex;
+  gap: 4px;
+}
+
+.digit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 72px;
+  background: #2c2c2c;
+  border-radius: 6px;
+  font-size: 3rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #f0f0f0;
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.4);
+  /* hairline split line */
+  border-top: 1px solid #3a3a3a;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Flip animation on digit change */
+@keyframes flip-in {
+  0%   { transform: rotateX(-90deg); opacity: 0; }
+  100% { transform: rotateX(0deg);   opacity: 1; }
+}
+
+.digit.flip {
+  animation: flip-in 0.18s ease-out;
+}
+
+.unit-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666;
+}
+
+/* Active "W, Big Time!" state */
+.active-message {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #f0c040;
+  letter-spacing: 0.03em;
+  margin-top: 16px;
 }
