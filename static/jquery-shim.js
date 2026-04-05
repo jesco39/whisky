@@ -69,9 +69,10 @@
   };
 
   $.fn.append = function (child) {
+    if (!child && child !== 0) return this; // ignore false/null/undefined
     var nodes = child instanceof $ ? child.els : [child];
     this.els.forEach(function (el) {
-      nodes.forEach(function (n) { el.appendChild(n); });
+      nodes.forEach(function (n) { if (n && n.nodeType) el.appendChild(n); });
     });
     return this;
   };
@@ -84,10 +85,39 @@
     return this;
   };
 
+  $.fn.remove = function () {
+    this.els.forEach(function (el) {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    });
+    return this;
+  };
+
+  $.fn.next = function () {
+    var found = [];
+    this.els.forEach(function (el) {
+      var sib = el.nextElementSibling;
+      if (sib) found.push(sib);
+    });
+    var w = new $();
+    w.els = found;
+    return w;
+  };
+
   $.fn.insertBefore = function (target) {
     var ref = target instanceof $ ? target.els[0] : target;
     if (ref && ref.parentNode) {
       this.els.forEach(function (n) { ref.parentNode.insertBefore(n, ref); });
+    }
+    return this;
+  };
+
+  $.fn.insertAfter = function (target) {
+    var ref = target instanceof $ ? target.els[0] : target;
+    if (ref && ref.parentNode) {
+      var next = ref.nextSibling;
+      this.els.forEach(function (n) {
+        ref.parentNode.insertBefore(n, next);
+      });
     }
     return this;
   };
