@@ -70,6 +70,11 @@
 
   $.fn.append = function (child) {
     if (!child && child !== 0) return this; // ignore false/null/undefined
+    var self = this;
+    if (typeof child === 'string') {
+      self.els.forEach(function (el) { el.insertAdjacentHTML('beforeend', child); });
+      return this;
+    }
     var nodes = child instanceof $ ? child.els : [child];
     this.els.forEach(function (el) {
       nodes.forEach(function (n) { if (n && n.nodeType) el.appendChild(n); });
@@ -78,6 +83,10 @@
   };
 
   $.fn.prepend = function (child) {
+    if (typeof child === 'string') {
+      this.els.forEach(function (el) { el.insertAdjacentHTML('afterbegin', child); });
+      return this;
+    }
     var nodes = child instanceof $ ? child.els : [child];
     this.els.forEach(function (el) {
       nodes.forEach(function (n) { el.insertBefore(n, el.firstChild); });
