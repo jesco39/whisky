@@ -1,0 +1,15 @@
+[Unit]
+Description=whisky Wednesday countdown
+After=network.target
+
+[Service]
+Type=simple
+User=whisky
+Group=whisky
+WorkingDirectory=/opt/whisky
+ExecStart=/opt/whisky/whisky
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

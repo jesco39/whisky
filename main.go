@@ -6,6 +6,7 @@ import (
 	"io/fs"
 	"log"
 	"net/http"
+	"os"
 	_ "time/tzdata"
 )
 
@@ -24,7 +25,11 @@ func main() {
 	staticSub, _ := fs.Sub(staticFS, "static")
 	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServerFS(staticSub)))
 
-	addr := ":8080"
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8082"
+	}
+	addr := ":" + port
 	fmt.Printf("Whisky Wednesday server running at http://localhost%s\n", addr)
 	log.Fatal(http.ListenAndServe(addr, mux))
 }
