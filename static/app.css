@@ -108,3 +108,37 @@ h1 {
   letter-spacing: 0.03em;
   margin-top: 16px;
 }
+
+/* Responsive: tablets and large phones (≤ 520px) */
+@media (max-width: 520px) {
+  .main {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  #countdown { gap: 5px; }
+  .digits { gap: 2px; }
+  .digit {
+    width: 34px;
+    height: 48px;
+    font-size: 2rem;
+  }
+  .sep {
+    font-size: 2.2rem;
+    padding-top: 9px;
+  }
+  .active-message { font-size: clamp(2rem, 8vw, 3.5rem); }
+}
+
+/* Small phones: iPhone SE (375px), Android 360px, and narrower */
+@media (max-width: 375px) {
+  #countdown { gap: 4px; }
+  .digit {
+    width: 29px;
+    height: 41px;
+    font-size: 1.7rem;
+  }
+  .sep {
+    font-size: 1.9rem;
+    padding-top: 8px;
+  }
+}
